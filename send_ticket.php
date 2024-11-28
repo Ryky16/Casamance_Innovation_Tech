@@ -1,16 +1,17 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
 require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/Exception.php';
 require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 
-//use PHPMailer\PHPMailer\PHPMailer;
-//use PHPMailer\PHPMailer\Exception;
-
 // Inclure les fichiers PHPMailer correctement
-require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/Exception.php';
-require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/SMTP.php';
+//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/Exception.php';
+//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $structureName = $_POST['structureName'];
@@ -46,8 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><strong>Nom de la structure :</strong> $structureName</p>
             <p><strong>Téléphone :</strong> $telephone</p>
             <p><strong>Email :</strong> $email</p>
-            <p><strong>Type de ticket :</strong> $ticketType</p>
-        ";
+            <p><strong>Type de ticket :</strong> $ticketType</p>";
 
         $mail->send();
         echo "Le message a bien été envoyé.";
