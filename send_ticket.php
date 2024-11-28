@@ -1,6 +1,11 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/Exception.php';
+require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/SMTP.php';
+
+
+//use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\Exception;
 
 // Inclure les fichiers PHPMailer correctement
 require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/Exception.php';
@@ -19,11 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Utilisez smtp.gmail.com si vous utilisez Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'n.henripierre@gmail.com'; // Remplacez par l'email de l'entreprise
-        $mail->Password = 'zdeo ymmn emrt jtxp'; // Remplacez par un mot de passe d'application si vous utilisez Gmail
+        $mail->Username = getenv('SMTP_USERNAME');
+        $mail->Password = getenv('SMTP_PASSWORD');
+
+        //$mail->Username = 'n.henripierre@gmail.com'; // Remplacez par l'email de l'entreprise
+        //$mail->Password = 'zdeo ymmn emrt jtxp'; // Remplacez par un mot de passe d'application si vous utilisez Gmail
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587; // Pour TLS, sinon 465 pour SSL
-
+        $mail->SMTPDebug = 2; // Affiche des informations détaillées sur la connexion SMTP
+        $mail->Debugoutput = 'html';
+        
         // Destinataire (email de l'entreprise)
         $mail->setFrom('n.henripierre@gmail.com', 'Erastus Group');
         $mail->addAddress('n.henripierre@gmail.com'); // Remplacez par l'email de l'entreprise
@@ -45,9 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
     }
 }
-
-
-
 
 ?>
 <?
