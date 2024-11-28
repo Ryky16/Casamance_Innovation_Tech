@@ -2,16 +2,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
-require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/Exception.php';
-require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-require __DIR__ . '/PHPMailer-master/PHPMailer-master/src/SMTP.php';
-
-
 // Inclure les fichiers PHPMailer correctement
-//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/Exception.php';
-//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-//require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/SMTP.php';
+require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/Exception.php';
+require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+require 'C:/xampp/htdocs/Casamance_Innovation_tech/PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $structureName = $_POST['structureName'];
@@ -25,16 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Utilisez smtp.gmail.com si vous utilisez Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = getenv('SMTP_USERNAME');
-        $mail->Password = getenv('SMTP_PASSWORD');
-
-        //$mail->Username = 'n.henripierre@gmail.com'; // Remplacez par l'email de l'entreprise
-        //$mail->Password = 'zdeo ymmn emrt jtxp'; // Remplacez par un mot de passe d'application si vous utilisez Gmail
+        $mail->Username = 'n.henripierre@gmail.com'; // Remplacez par l'email de l'entreprise
+        $mail->Password = 'zdeo ymmn emrt jtxp'; // Remplacez par un mot de passe d'application si vous utilisez Gmail
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587; // Pour TLS, sinon 465 pour SSL
-        $mail->SMTPDebug = 2; // Affiche des informations détaillées sur la connexion SMTP
-        $mail->Debugoutput = 'html';
-        
+
         // Destinataire (email de l'entreprise)
         $mail->setFrom('n.henripierre@gmail.com', 'Erastus Group');
         $mail->addAddress('n.henripierre@gmail.com'); // Remplacez par l'email de l'entreprise
@@ -47,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><strong>Nom de la structure :</strong> $structureName</p>
             <p><strong>Téléphone :</strong> $telephone</p>
             <p><strong>Email :</strong> $email</p>
-            <p><strong>Type de ticket :</strong> $ticketType</p>";
+            <p><strong>Type de ticket :</strong> $ticketType</p>
+        ";
 
         $mail->send();
         echo "Le message a bien été envoyé.";
