@@ -58,11 +58,11 @@
                 <li><a href="#gallery">Galeries</a></li>
                 <li><a href="#sponsors">Sponsors</a></li>
                 <li><a href="Contact.html">Contactez-Nous</a></li>
-                <!--li class="buy-tickets"><a href="#buy-tickets">Formule Pour Partenaire</a></li-->
+                <li class="buy-tickets"><a href="#buy-tickets">SUIVEZ-NOUS EN DIRECT</a></li>
                <!-- Bouton  de réservation -->
-                <li class="nav-menu">
+                <!--li class="nav-menu"-->
                     <!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ticketModal">Réservez vos tickets</button-->
-                </li>
+                <!--/li-->
             </ul>
         </nav>
     </div>
@@ -605,44 +605,47 @@
       Sponsors Section
     ============================-->
     <section id="sponsors" class="section-with-bg wow fadeInUp">
-      
       <div class="container wow fadeInUp">
-        <div class="section-header">
-            <h2>Sponsors</h2>
-            
+        <div class="section-header text-center">
+          <h2>Sponsors</h2>
           <p>Édition 2024</p>
         </div>
     
-        <div class="row no-gutters supporters-wrap text-center">
-          <div class="col-lg-2 col-md-4 col-sm-6">
+        <!-- Bande des logos -->
+        <div class="sponsor-slider">
+          <div class="slider-track">
             <div class="supporter-logo">
-              <img src="img/supporters/digit.jpeg" class="img-fluid supporter-img" alt="Digit">
+              <img src="img/supporters/digit.jpeg" alt="Digit">
             </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6">
             <div class="supporter-logo">
-              <img src="img/supporters/Ctic.jpeg" class="img-fluid supporter-img" alt="Ctic">
+              <img src="img/supporters/Ctic.jpeg" alt="Ctic">
             </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-5">
             <div class="supporter-logo">
-              <img src="img/supporters/Kanari.jpeg" class="img-fluid supporter-img" alt="Kanari">
+              <img src="img/supporters/Kanari.jpeg" alt="Kanari">
             </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-5">
             <div class="supporter-logo">
-              <img src="img/supporters/studiosudjpeg.jpeg" class="img-fluid supporter-img" alt="Kanari">
+              <img src="img/supporters/studiosudjpeg.jpeg" alt="Studio Sud">
             </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6">
             <div class="supporter-logo">
-              <img src="img/supporters/agrosot.jpeg" class="img-fluid supporter-img" alt="Agrosot">
+              <img src="img/supporters/xara.jpeg" alt="Xara">
             </div>
-          </div>
-       
-          <div class="col-lg-2 col-md-4 col-sm-6">
+          
             <div class="supporter-logo">
-              <img src="img/supporters/tm.jpeg" class="img-fluid supporter-img" alt="TM">
+              <img src="img/supporters/supeco.jpeg" alt="Supeco">
+            </div>
+
+            <div class="supporter-logo">
+              <img src="img/supporters/subbesn.jpeg" alt="Subbesn">
+            </div>
+
+            
+
+            <div class="supporter-logo">
+              <img src="img/supporters/agrosot.jpeg" alt="Agrosot">
+            </div>
+
+            <div class="supporter-logo">
+              <img src="img/supporters/tm.jpeg" alt="TM">
             </div>
           </div>
         </div>
@@ -650,33 +653,71 @@
     </section>
     
     <style>
-      .supporter-logo {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 30px; /* Ajoute un espacement en bas de chaque logo */
-      }
-    
-      .supporter-logo img {
-        transition: transform 0.4s ease;
-        width: 100%;
-        height: auto;
-        padding: 30px; /* Ajoute un espacement interne pour que les images ne soient pas collées */
-      }
-    
-      .row.no-gutters {
-        margin-right: -15px;
-        margin-left: -15px;
-      }
-    
-      .col-lg-2, .col-md-4, .col-sm-6 {
-        padding-left: 15px;
-        padding-right: 15px; /* Ajoute un espacement horizontal entre les colonnes */
-      }
-    
-      .supporter-logo:hover img {
-        transform: scale(1.1); /* Agrandit l'image lors du survol */
-      }
+       /* Section des sponsors */
+#sponsors {
+  padding: 60px 0;
+  background: #f9f9f9;
+}
+
+#sponsors .section-header {
+  margin-bottom: 30px;
+}
+
+#sponsors .sponsor-slider {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.slider-track {
+  display: flex;
+  animation: slide 15s linear infinite; /* Animation de défilement */
+}
+
+.supporter-logo {
+  flex: 0 0 auto; /* Garde chaque logo à sa taille originale */
+  margin: 0 15px;
+  transition: transform 0.4s ease;
+}
+
+.supporter-logo img {
+  width: 120px; /* Taille des logos */
+  height: auto;
+  /*filter: grayscale(100%);*/ /* Effet noir et blanc par défaut */
+  transition: all 0.3s ease;
+}
+
+.supporter-logo:hover img {
+  transform: scale(1.1); /* Agrandissement au survol */
+  filter: grayscale(0); /* Retourne en couleur au survol */
+}
+
+/* Animation de défilement */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
     </style> 
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliderTrack = document.querySelector(".slider-track");
+    const logos = document.querySelectorAll(".supporter-logo");
+
+    // Clone les logos pour créer une boucle infinie
+    logos.forEach((logo) => {
+      const clone = logo.cloneNode(true);
+      sliderTrack.appendChild(clone);
+    });
+  });
+</script>
+
 
     <!--==========================
       Subscribe Section
