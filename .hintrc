@@ -41,6 +41,7 @@
       {
         "duplicate-id-active": "off"
       }
-    ]
+    ],
+    "disown-opener": "off"
   }
 }
